@@ -28,9 +28,6 @@
     
     //setSVProgressHUD style
     
-    UIWindow *keyWindow = UIApplication.sharedApplication.delegate.window;
-    [keyWindow makeKeyAndVisible];
-    
     return YES;
 }
 
