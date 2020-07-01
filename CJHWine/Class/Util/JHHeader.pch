@@ -12,5 +12,6 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
 #import "JHMacro.h"
+#import "JHColorHeader.h"
 
 #endif /* JHHeader_pch */

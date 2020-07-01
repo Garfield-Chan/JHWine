@@ -16,6 +16,8 @@
 
 @interface JHTabBarController ()<UITabBarControllerDelegate>
 
+@property (nonatomic, strong) UIImageView *launchImage;
+
 @end
 
 @implementation JHTabBarController
@@ -23,9 +25,55 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setLauch];
     [self addChildVC];
     self.view.backgroundColor = [UIColor greenColor];
-    NSLog(@"-");
+    
+    
+    
+}
+
+- (void)setLauch{
+    self.launchImage = [[UIImageView alloc]initWithFrame:self.view.frame];
+    self.launchImage.image = [UIImage imageNamed:@"top_launch"];
+    self.launchImage.tag = 1000;
+    [self.view addSubview:self.launchImage];
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self endLaunch];
+    });
+    
+    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(kWidth - 80, 30, 60, 25)];
+    btn.backgroundColor = [UIColor colorWithRed:(30)/255.0 green:(30)/255.0 blue:(30)/255.0 alpha:(0.7)];
+    btn.titleLabel.font = [UIFont systemFontOfSize:14];
+    btn.layer.cornerRadius = 9;
+    btn.layer.masksToBounds = YES;
+    btn.tag = 1111;
+    [btn setTitle:@"跳过" forState:UIControlStateNormal];
+    [btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [btn addTarget:self action:@selector(endLaunch) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:btn];
+    
+}
+
+- (void)endLaunch{
+    if (!self.launchImage) {
+        return;
+    }
+    
+    UIButton *btn = [self.view viewWithTag:1111];
+    if (btn) {
+        [btn removeFromSuperview];
+    }
+    
+    [UIView animateWithDuration:0.5 animations:^{
+        self.launchImage.transform = CGAffineTransformMakeScale(1.3, 1.3);
+        self.launchImage.alpha = 0;
+    } completion:^(BOOL finished) {
+        [self.launchImage removeFromSuperview];
+    }];
+    
+    
 }
 
 - (void)addChildVC{
@@ -40,6 +88,7 @@
     
     JHShoppingVC *shoppingVC = [[JHShoppingVC alloc]init];
     JHNavigationController *shoppingNavVC = [self setChildVC:shoppingVC title:@"购物车" imageName:@"" selectedImageName:@""];
+    shoppingNavVC.tabBarItem.badgeValue = @"99+";
     
     JHMeVC *meVC = [[JHMeVC alloc]init];
     JHNavigationController *meNavVC = [self setChildVC:meVC title:@"我的" imageName:@"" selectedImageName:@""];
@@ -58,8 +107,6 @@
 #pragma mark - delegate
 -(void)setSelectedIndex:(NSUInteger)selectedIndex{
     [super setSelectedIndex:selectedIndex];
-    
-    NSLog(@"%lud", (unsigned long)selectedIndex);
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
@@ -68,7 +115,7 @@
     animation.type = kCATransitionFade;
     animation.subtype = kCATransitionFromRight;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];;
-    animation.accessibilityFrame = CGRectMake(0, 64, kWidth, kHeight);
+//    animation.accessibilityFrame = CGRectMake(0, 64, kWidth, kHeight);
     [self.view.layer addAnimation:animation forKey:@"switchView"];
 }
 
