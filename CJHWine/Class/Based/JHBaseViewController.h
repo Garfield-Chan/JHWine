@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-NS_ASSUME_NONNULL_BEGIN
-
 @interface JHBaseViewController : UIViewController
+
+- (instancetype)initWithViewModel:(JHBaseViewModel *)viewModel;
+- (void)bindViewModel;
 
 @end
 
-NS_ASSUME_NONNULL_END

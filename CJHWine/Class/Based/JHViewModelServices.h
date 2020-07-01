@@ -16,9 +16,9 @@
 - (void)popViewControllerWithAnimated:(BOOL)animated;
 - (void)popToRootViewModelWithAnimated:(BOOL)animated;
 
-- (void)presentViewModel:(JHBaseViewModel *)viewModel animated:(BOOL)animated complete:(void(^)())complete;
+- (void)presentViewModel:(JHBaseViewModel *)viewModel animated:(BOOL)animated complete:(void(^)(void))complete;
 
 ///模态弹出vc，用于alert
-- (void)presentViewController:(UIViewController *)viewController animated:(BOOL)animated complete:(void(^)())complete;
+- (void)presentViewController:(UIViewController *)viewController animated:(BOOL)animated complete:(void(^)(void))complete;
 
 @end

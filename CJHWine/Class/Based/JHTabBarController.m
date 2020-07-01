@@ -18,19 +18,43 @@
 
 @property (nonatomic, strong) UIImageView *launchImage;
 
+
+
 @end
 
 @implementation JHTabBarController
 
+#pragma mark - life cycle
 - (void)viewDidLoad {
     [super viewDidLoad];
     
     [self setLauch];
     [self addChildVC];
-    self.view.backgroundColor = [UIColor greenColor];
     
-    
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(readDataFinish) name:READ_USER_DATA_FINISH object:nil];
+    [self observeBageValue];
+}
+
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[JHUser currentUser] removeObserver:self forKeyPath:@"bageValue"];
+}
+
+#pragma mark - private methods
+- (void)observeBageValue{
+    @weakify(self);
+    [RACObserve([JHUser currentUser], bageValue) subscribeNext:^(id x) {
+        @strongify(self);
+        UIViewController *vc = self.viewControllers[3];
+        NSInteger value = [x integerValue];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if (value > 0) {
+                vc.tabBarItem.badgeValue = [NSString stringWithFormat:@"%ld", value];
+            }else{
+                vc.tabBarItem.badgeValue = nil;
+            }
+        });
+    }];
 }
 
 - (void)setLauch{
@@ -43,7 +67,7 @@
         [self endLaunch];
     });
     
-    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(kWidth - 80, 30, 60, 25)];
+    UIButton *btn = [[UIButton alloc]initWithFrame:CGRectMake(kWidth - 80, 50, 60, 25)];
     btn.backgroundColor = [UIColor colorWithRed:(30)/255.0 green:(30)/255.0 blue:(30)/255.0 alpha:(0.7)];
     btn.titleLabel.font = [UIFont systemFontOfSize:14];
     btn.layer.cornerRadius = 9;
@@ -78,30 +102,40 @@
 
 - (void)addChildVC{
     JHHomeVC *homeVC = [[JHHomeVC alloc]init];
-    JHNavigationController *homeNavVC = [self setChildVC:homeVC title:@"首页" imageName:@"" selectedImageName:@""];
+    JHNavigationController *homeNavVC = [self setChildVC:homeVC title:@"首页" imageName:@"homeNormal" selectedImageName:@"homeHight"];
     
     JHCategoryVC *categoryVC = [[JHCategoryVC alloc]init];
-    JHNavigationController *categoryNavVC = [self setChildVC:categoryVC title:@"分类" imageName:@"" selectedImageName:@""];
+    JHNavigationController *categoryNavVC = [self setChildVC:categoryVC title:@"分类" imageName:@"categoryNormal" selectedImageName:@"categoryHight"];
     
     JHFoundVC *foundVC = [[JHFoundVC alloc]init];
-    JHNavigationController *foundNavVC = [self setChildVC:foundVC title:@"发现" imageName:@"" selectedImageName:@""];
+    JHNavigationController *foundNavVC = [self setChildVC:foundVC title:@"发现" imageName:@"foundNormal" selectedImageName:@"foundHight"];
     
     JHShoppingVC *shoppingVC = [[JHShoppingVC alloc]init];
-    JHNavigationController *shoppingNavVC = [self setChildVC:shoppingVC title:@"购物车" imageName:@"" selectedImageName:@""];
+    JHNavigationController *shoppingNavVC = [self setChildVC:shoppingVC title:@"购物车" imageName:@"carNormal" selectedImageName:@"carHight"];
     shoppingNavVC.tabBarItem.badgeValue = @"99+";
     
     JHMeVC *meVC = [[JHMeVC alloc]init];
-    JHNavigationController *meNavVC = [self setChildVC:meVC title:@"我的" imageName:@"" selectedImageName:@""];
+    JHNavigationController *meNavVC = [self setChildVC:meVC title:@"我的" imageName:@"meNormal" selectedImageName:@"meHight"];
     
     self.viewControllers = @[homeNavVC, categoryNavVC, foundNavVC, shoppingNavVC, meNavVC];
 }
 
 - (JHNavigationController *)setChildVC:(UIViewController *)vc title:(NSString *)title imageName:(NSString *)imageName selectedImageName:(NSString *)selectedImageName{
+    vc.title = title;
+    
     JHNavigationController *navVC = [[JHNavigationController alloc]initWithRootViewController:vc];
-    navVC.title = title;
-    navVC.tabBarItem.image = [UIImage imageNamed:imageName];
-    navVC.tabBarItem.selectedImage = [UIImage imageNamed:selectedImageName];
+    navVC.tabBarItem.image = [[UIImage imageNamed:imageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    navVC.tabBarItem.selectedImage = [[UIImage imageNamed:selectedImageName] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    NSDictionary *dic       = @{NSForegroundColorAttributeName:BLACK_COLOR,NSFontAttributeName:[UIFont systemFontOfSize:12]};
+    [navVC.tabBarItem setTitleTextAttributes:dic forState:UIControlStateNormal];
+    NSDictionary *selectDic = @{NSForegroundColorAttributeName:THEME_COLOR,NSFontAttributeName:[UIFont systemFontOfSize:12]};
+    [navVC.tabBarItem setTitleTextAttributes:selectDic forState:UIControlStateSelected];
+    navVC.tabBarController.tabBar.tintColor = THEME_COLOR;
     return navVC;
+}
+
+- (void)readDataFinish{
+    
 }
 
 #pragma mark - delegate
@@ -115,8 +149,22 @@
     animation.type = kCATransitionFade;
     animation.subtype = kCATransitionFromRight;
     animation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseOut];;
-//    animation.accessibilityFrame = CGRectMake(0, 64, kWidth, kHeight);
+    animation.accessibilityFrame = CGRectMake(0, 64, kWidth, kHeight);
     [self.view.layer addAnimation:animation forKey:@"switchView"];
+}
+
+#pragma mark - KVO
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    if ([keyPath isEqualToString:@"bageValue"]) {
+        UIViewController *vc = self.viewControllers[3];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            if ([JHUser currentUser].bageValue > 0) {
+                vc.tabBarItem.badgeValue = [NSString stringWithFormat:@"%ld", [JHUser currentUser].bageValue];
+            }else{
+                vc.tabBarItem.badgeValue = nil;
+            }
+        });
+    }
 }
 
 /*

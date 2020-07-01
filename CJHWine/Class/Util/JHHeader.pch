@@ -9,9 +9,23 @@
 #ifndef JHHeader_pch
 #define JHHeader_pch
 
+//第三方
 #import <ReactiveCocoa/ReactiveCocoa.h>
 
+//宏
 #import "JHMacro.h"
 #import "JHColorHeader.h"
+
+//类别
+
+//base
+#import "JHBaseViewModel.h"
+#import "JHBaseViewController.h"
+#import "JHViewModelNavigationImpl.h"
+#import "JHBindProtocol.h"
+#import "JHViewModelServices.h"
+#import "JHNavigationController.h"
+
+#import "JHUser.h"
 
 #endif /* JHHeader_pch */

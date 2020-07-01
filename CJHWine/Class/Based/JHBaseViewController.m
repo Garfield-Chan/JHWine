@@ -10,13 +10,28 @@
 
 @interface JHBaseViewController ()
 
+@property (nonatomic, strong) JHBaseViewModel *viewModel;
+@property (nonatomic, strong) UIPercentDrivenInteractiveTransition *interactivePopTransition;
+
 @end
 
 @implementation JHBaseViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    
+}
+
+- (instancetype)initWithViewModel:(JHBaseViewModel *)viewModel{
+    if (self = [super init]) {
+        _viewModel = viewModel;
+    }
+    return self;
+}
+
+- (void)bindViewModel{
+    RAC(self.navigationItem, title) = RACObserve(self.viewModel, title);
 }
 
 /*

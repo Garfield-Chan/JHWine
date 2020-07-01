@@ -7,11 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+//#import "JHViewModelServices.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@interface JHViewModelNavigationImpl : NSObject<JHViewModelServices>
 
-@interface JHViewModelNavigationImpl : NSObject
+@property (nonatomic, copy) NSString *className;
+
+//tabbar index
+@property (nonatomic, assign) NSInteger selectedIndex;
+
+- (instancetype)initWithNavigationController:(UINavigationController *)nav;
 
 @end
 
-NS_ASSUME_NONNULL_END
