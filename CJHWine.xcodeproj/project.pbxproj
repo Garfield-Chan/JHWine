@@ -49,6 +49,12 @@
 		083AFBB424AC326600577C6F /* JHAddress.m in Sources */ = {isa = PBXBuildFile; fileRef = 083AFBB324AC326600577C6F /* JHAddress.m */; };
 		083AFBBB24AC9C2700577C6F /* JHLoginVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 083AFBBA24AC9C2700577C6F /* JHLoginVC.m */; };
 		083AFBBE24AC9C3900577C6F /* JHLoginViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 083AFBBD24AC9C3900577C6F /* JHLoginViewModel.m */; };
+		083AFBC124AD05B300577C6F /* JHHomeCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 083AFBC024AD05B300577C6F /* JHHomeCollectionView.m */; };
+		083AFBC424AD05C800577C6F /* JHSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 083AFBC324AD05C700577C6F /* JHSearchBar.m */; };
+		083AFBC724AD063000577C6F /* JHHomeViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 083AFBC624AD063000577C6F /* JHHomeViewModel.m */; };
+		083AFBCB24ADBF7D00577C6F /* UIImage+Color.m in Sources */ = {isa = PBXBuildFile; fileRef = 083AFBCA24ADBF7D00577C6F /* UIImage+Color.m */; };
+		083AFBCE24ADD22800577C6F /* JHHomeHeadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 083AFBCD24ADD22800577C6F /* JHHomeHeadView.m */; };
+		083AFBD124ADD24700577C6F /* JHHomeCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 083AFBD024ADD24700577C6F /* JHHomeCell.m */; };
 		41F1EB55B3C9BE686891A153 /* Pods_CJHWine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B6408E0C5F4E6C830E143D7A /* Pods_CJHWine.framework */; };
 /* End PBXBuildFile section */
 
@@ -119,6 +125,18 @@
 		083AFBBA24AC9C2700577C6F /* JHLoginVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHLoginVC.m; sourceTree = "<group>"; };
 		083AFBBC24AC9C3900577C6F /* JHLoginViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHLoginViewModel.h; sourceTree = "<group>"; };
 		083AFBBD24AC9C3900577C6F /* JHLoginViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHLoginViewModel.m; sourceTree = "<group>"; };
+		083AFBBF24AD05B300577C6F /* JHHomeCollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHHomeCollectionView.h; sourceTree = "<group>"; };
+		083AFBC024AD05B300577C6F /* JHHomeCollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHHomeCollectionView.m; sourceTree = "<group>"; };
+		083AFBC224AD05C700577C6F /* JHSearchBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHSearchBar.h; sourceTree = "<group>"; };
+		083AFBC324AD05C700577C6F /* JHSearchBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHSearchBar.m; sourceTree = "<group>"; };
+		083AFBC524AD063000577C6F /* JHHomeViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHHomeViewModel.h; sourceTree = "<group>"; };
+		083AFBC624AD063000577C6F /* JHHomeViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHHomeViewModel.m; sourceTree = "<group>"; };
+		083AFBC924ADBF7D00577C6F /* UIImage+Color.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIImage+Color.h"; sourceTree = "<group>"; };
+		083AFBCA24ADBF7D00577C6F /* UIImage+Color.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIImage+Color.m"; sourceTree = "<group>"; };
+		083AFBCC24ADD22800577C6F /* JHHomeHeadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHHomeHeadView.h; sourceTree = "<group>"; };
+		083AFBCD24ADD22800577C6F /* JHHomeHeadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHHomeHeadView.m; sourceTree = "<group>"; };
+		083AFBCF24ADD24700577C6F /* JHHomeCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JHHomeCell.h; sourceTree = "<group>"; };
+		083AFBD024ADD24700577C6F /* JHHomeCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JHHomeCell.m; sourceTree = "<group>"; };
 		379625B9AB1348B9D8D3FCAD /* Pods-CJHWine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJHWine.release.xcconfig"; path = "Target Support Files/Pods-CJHWine/Pods-CJHWine.release.xcconfig"; sourceTree = "<group>"; };
 		568B054D1F1C3A911DE077CF /* Pods-CJHWine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CJHWine.debug.xcconfig"; path = "Target Support Files/Pods-CJHWine/Pods-CJHWine.debug.xcconfig"; sourceTree = "<group>"; };
 		B6408E0C5F4E6C830E143D7A /* Pods_CJHWine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CJHWine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -157,6 +175,7 @@
 		083AFA5324A878CE00577C6F /* CJHWine */ = {
 			isa = PBXGroup;
 			children = (
+				083AFBC824ADBA9F00577C6F /* Category */,
 				083AFA7024A8904D00577C6F /* Class */,
 				083AFAFE24A8904D00577C6F /* Resource */,
 				083AFB2324A8904E00577C6F /* Tools */,
@@ -198,6 +217,8 @@
 		083AFA7124A8904D00577C6F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				083AFBC524AD063000577C6F /* JHHomeViewModel.h */,
+				083AFBC624AD063000577C6F /* JHHomeViewModel.m */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -226,6 +247,14 @@
 		083AFA7424A8904D00577C6F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				083AFBBF24AD05B300577C6F /* JHHomeCollectionView.h */,
+				083AFBC024AD05B300577C6F /* JHHomeCollectionView.m */,
+				083AFBC224AD05C700577C6F /* JHSearchBar.h */,
+				083AFBC324AD05C700577C6F /* JHSearchBar.m */,
+				083AFBCC24ADD22800577C6F /* JHHomeHeadView.h */,
+				083AFBCD24ADD22800577C6F /* JHHomeHeadView.m */,
+				083AFBCF24ADD24700577C6F /* JHHomeCell.h */,
+				083AFBD024ADD24700577C6F /* JHHomeCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -344,6 +373,15 @@
 				083AFBBD24AC9C3900577C6F /* JHLoginViewModel.m */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		083AFBC824ADBA9F00577C6F /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				083AFBC924ADBF7D00577C6F /* UIImage+Color.h */,
+				083AFBCA24ADBF7D00577C6F /* UIImage+Color.m */,
+			);
+			path = Category;
 			sourceTree = "<group>";
 		};
 		E9C96FBC15F47141294ABBA2 /* Pods */ = {
@@ -500,11 +538,14 @@
 			files = (
 				083AFBBE24AC9C3900577C6F /* JHLoginViewModel.m in Sources */,
 				083AFB9424A9F76400577C6F /* JHCategoryVC.m in Sources */,
+				083AFBD124ADD24700577C6F /* JHHomeCell.m in Sources */,
+				083AFBC124AD05B300577C6F /* JHHomeCollectionView.m in Sources */,
 				083AFA5C24A878CE00577C6F /* ViewController.m in Sources */,
 				083AFB9124A9F75000577C6F /* JHHomeVC.m in Sources */,
 				083AFB8B24A9F71200577C6F /* JHNavigationController.m in Sources */,
 				083AFBB124AC323300577C6F /* JHUser.m in Sources */,
 				083AFB9A24A9F77E00577C6F /* JHShoppingVC.m in Sources */,
+				083AFBC724AD063000577C6F /* JHHomeViewModel.m in Sources */,
 				083AFB8224A8929200577C6F /* JHTabBarController.m in Sources */,
 				083AFB9D24A9F78800577C6F /* JHMeVC.m in Sources */,
 				083AFA5624A878CE00577C6F /* AppDelegate.m in Sources */,
@@ -513,7 +554,10 @@
 				083AFA6724A878D300577C6F /* main.m in Sources */,
 				083AFB8E24A9F73000577C6F /* JHBaseViewModel.m in Sources */,
 				083AFA5924A878CE00577C6F /* SceneDelegate.m in Sources */,
+				083AFBCE24ADD22800577C6F /* JHHomeHeadView.m in Sources */,
 				083AFB9724A9F77100577C6F /* JHFoundVC.m in Sources */,
+				083AFBC424AD05C800577C6F /* JHSearchBar.m in Sources */,
+				083AFBCB24ADBF7D00577C6F /* UIImage+Color.m in Sources */,
 				083AFBB424AC326600577C6F /* JHAddress.m in Sources */,
 				083AFB8824A9F6FD00577C6F /* JHBaseViewController.m in Sources */,
 			);

@@ -17,6 +17,7 @@
 #import "JHColorHeader.h"
 
 //类别
+#import "UIImage+Color.h"
 
 //base
 #import "JHBaseViewModel.h"
